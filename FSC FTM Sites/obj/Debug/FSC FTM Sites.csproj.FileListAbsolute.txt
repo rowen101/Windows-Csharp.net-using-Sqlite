@@ -16,4 +16,6 @@ C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#
 C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\bin\Debug\System.Data.SQLite.xml
 C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\obj\Debug\FSC FTM Sites.csproj.CopyComplete
+C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.frm_adduser.resources
 C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\obj\Debug\FSC FTM Sites.csprojAssemblyReference.cache
+C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.frm_site.resources
