@@ -17,6 +17,8 @@ namespace FSC_FTM_Sites
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
+
+        string ID;
         public Form1()
         {
             InitializeComponent();
@@ -48,8 +50,8 @@ namespace FSC_FTM_Sites
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
             //string CommandText = "select * from tbl_site";
-            string CommandText = "select tbl_site.id,  tbl_site.business_group,  tbl_site.email, tbl_site.area,  tbl_site.contact, tbl_site.user_id, tbl_user.fullname, tbl_site.site_name from tbl_site inner join " +
-                "tbl_user on tbl_site.user_id = tbl_user.id";
+            string CommandText = "select tbl_site.siteid, tbl_user.codename,  tbl_site.business_group,  tbl_site.email, tbl_site.area,  tbl_site.contact, tbl_site.user_id, tbl_user.fullname, tbl_site.site_name from tbl_site inner join " +
+                "tbl_user on tbl_site.user_id = tbl_user.id order by tbl_site.siteid desc";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
             DB.Fill(DS);
@@ -107,7 +109,7 @@ namespace FSC_FTM_Sites
             if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgList1.CurrentRow.Selected = true;
-                lblsiteid.Text = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+                ID = dgList1.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
                 
 
 
@@ -145,9 +147,21 @@ namespace FSC_FTM_Sites
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
-            string txtQuery = "delete from tbl_site where id='" + lblsiteid.Text + "'";
-            ExecuteQuery(txtQuery);
-            LoadData();
+            string message = "Do you want to delete this site?";
+            string title = "Delete";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                string txtQuery = "delete from tbl_site where siteid='" + ID + "'";
+                ExecuteQuery(txtQuery);
+                LoadData();
+            }
+            else
+            {
+                // Do something  
+            }
+           
         }
 
         private void DgList1_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -163,6 +177,11 @@ namespace FSC_FTM_Sites
                     button2.Text = "&Add Site";
                 }
             }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            (dgList1.DataSource as DataTable).DefaultView.RowFilter = string.Format("site_name LIKE '%{0}%' OR codename LIKE '%{0}%'", searchTextBox.Text);
         }
     }
 }

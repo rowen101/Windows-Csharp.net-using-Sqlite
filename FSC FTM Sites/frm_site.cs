@@ -80,5 +80,10 @@ namespace FSC_FTM_Sites
             ExecuteQuery(txtQuery);
             LoadData();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
