@@ -104,13 +104,15 @@ namespace FSC_FTM_Sites
 
         private void DgList1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            //{
-            //    dgList1.CurrentRow.Selected = true;
-            //    lblsiteid.Text = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
-               
-            //}
-           // lblsiteid.Text = dgList1.SelectedRows[0].Cells[0].Value.ToString();
+            if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dgList1.CurrentRow.Selected = true;
+                lblsiteid.Text = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+                
+
+
+            }
+            // lblsiteid.Text = dgList1.SelectedRows[0].Cells[0].Value.ToString();
 
         }
         private void grideview()

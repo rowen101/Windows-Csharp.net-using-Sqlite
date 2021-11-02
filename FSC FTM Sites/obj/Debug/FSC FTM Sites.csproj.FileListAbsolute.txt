@@ -19,3 +19,23 @@ C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#
 C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.frm_adduser.resources
 C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\obj\Debug\FSC FTM Sites.csprojAssemblyReference.cache
 C:\Users\Rowen\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\FSC FTM Sites\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.frm_site.resources
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\FSC FTM Sites.exe.config
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\FSC FTM Sites.exe
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\FSC FTM Sites.pdb
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\EntityFramework.dll
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\System.Data.SQLite.dll
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\EntityFramework.xml
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\bin\Debug\System.Data.SQLite.xml
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.csproj.AssemblyReference.cache
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.Form1.resources
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.frm_adduser.resources
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.frm_site.resources
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC_FTM_Sites.Properties.Resources.resources
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.csproj.GenerateResource.cache
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.csproj.CoreCompileInputs.cache
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.exe
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.pdb
