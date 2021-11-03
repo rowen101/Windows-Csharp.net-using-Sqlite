@@ -38,5 +38,4 @@ C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\ob
 C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.csproj.CoreCompileInputs.cache
 C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.exe
 C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.pdb
-C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.csproj.CopyComplete
-C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.csprojAssemblyReference.cache
+C:\Users\Rowen\Documents\GitHub\Windows-Csharp.net-using-Sqlite\FSC FTM Sites\obj\Debug\FSC FTM Sites.csproj.AssemblyReference.cache

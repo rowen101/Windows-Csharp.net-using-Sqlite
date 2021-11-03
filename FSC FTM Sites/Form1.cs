@@ -50,7 +50,7 @@ namespace FSC_FTM_Sites
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
             //string CommandText = "select * from tbl_site";
-            string CommandText = "select tbl_site.siteid, tbl_user.codename,  tbl_site.business_group,  tbl_site.email, tbl_site.area,  tbl_site.contact, tbl_site.user_id, tbl_user.fullname, tbl_site.site_name from tbl_site inner join " +
+            string CommandText = "select tbl_site.siteid, tbl_user.codename,  tbl_site.business_group, tbl_site.area,  tbl_site.user_id, tbl_user.fullname, tbl_site.site_name from tbl_site inner join " +
                 "tbl_user on tbl_site.user_id = tbl_user.id order by tbl_site.siteid desc";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
@@ -71,20 +71,6 @@ namespace FSC_FTM_Sites
             LoadData();
 
         }
-
-        //private void Btnadd_Click(object sender, EventArgs e)
-        //{
-        //    string txtQuery = "insert into tbl_site (fullname)values('" + txtname.Text + "')";
-        //    ExecuteQuery(txtQuery);
-        //    LoadData();
-        //}
-
-        //private void Btnedit_Click(object sender, EventArgs e)
-        //{
-        //    string txtQuery = "update tbl_user set fullname='" + txtname.Text + "' where id='" + label2.Text + "'";
-        //    ExecuteQuery(txtQuery);
-        //    LoadData();
-        //}
 
       
 
@@ -109,7 +95,7 @@ namespace FSC_FTM_Sites
             if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgList1.CurrentRow.Selected = true;
-                ID = dgList1.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                ID = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
                 
 
 
@@ -181,7 +167,7 @@ namespace FSC_FTM_Sites
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            (dgList1.DataSource as DataTable).DefaultView.RowFilter = string.Format("site_name LIKE '%{0}%' OR codename LIKE '%{0}%'", searchTextBox.Text);
+            (dgList1.DataSource as DataTable).DefaultView.RowFilter = string.Format("business_group LIKE '%{0}%' OR fullname LIKE '%{0}%' OR site_name LIKE '%{0}%' OR codename LIKE '%{0}%' OR area LIKE '%{0}%'", searchTextBox.Text);
         }
     }
 }

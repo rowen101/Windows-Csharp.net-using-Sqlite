@@ -22,6 +22,7 @@ namespace FSC_FTM_Sites
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
         //set connection
+        public string userid;
         private void SetConnection()
         {
             sql_con = new SQLiteConnection
@@ -65,25 +66,66 @@ namespace FSC_FTM_Sites
             try
             {
                 string accountName = comboBox1.SelectedValue.ToString();
-                lbluserid.Text = accountName;
+                userid = accountName;
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
             }
         }
+        private void addsite()
+        {
+            string txtQuery = "insert into tbl_site (user_id, site_name,business_group, area)values" +
+              "('" + Convert.ToInt16(userid) + "', '" + txtsitename.Text + "', '" + txtbg.Text + "','" + txtarea.Text + "')";
+            ExecuteQuery(txtQuery);
+            cleartxt();
 
+            Form1 frm = new Form1();
+            frm.dgList1.Refresh();
+        }
         private void Btnadd_Click(object sender, EventArgs e)
         {
-            string txtQuery = "insert into tbl_site (user_id, site_name,business_group, area, site_head, email, contact)values" +
-                "('" + Convert.ToInt16(lbluserid.Text) + "', '" + txtsitename.Text + "', '"+txtbg.Text+"','"+txtarea.Text+"', '"+ txtsitehead.Text+"','"+txtemail.Text+"', '"+txtcontact.Text+"')";
-            ExecuteQuery(txtQuery);
-            LoadData();
+            try
+            {
+                addsite();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
-
+        private void cleartxt()
+        {
+            txtarea.Clear();
+            txtbg.Clear();
+            txtsitename.Clear();
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void txtarea_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                string message = "Do you want to Add More site?";
+                string title = "Add";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
+                {
+                    addsite();
+                    txtsitename.Focus();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+           
+        }
+
+      
     }
 }
