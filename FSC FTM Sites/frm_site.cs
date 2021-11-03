@@ -23,6 +23,8 @@ namespace FSC_FTM_Sites
         private DataTable DT = new DataTable();
         //set connection
         public string userid;
+        string msgmessage;
+        string msgtitle;
         private void SetConnection()
         {
             sql_con = new SQLiteConnection
@@ -83,16 +85,46 @@ namespace FSC_FTM_Sites
             Form1 frm = new Form1();
             frm.dgList1.Refresh();
         }
-        private void Btnadd_Click(object sender, EventArgs e)
+        private void Sitefunc()
         {
             try
             {
-                addsite();
+                if (txtsitename.Text == "" || txtbg.Text == "" || txtarea.Text == "")
+                {
+                    msgmessage = "Field is empty";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string message = "Do you want to Add More site?";
+                    string title = "Add";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        addsite();
+                        txtsitename.Focus();
+                    }
+                    else
+                    {
+                        addsite();
+                        this.Close();
+                    }
+
+                }
+
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
             }
+        }
+        private void Btnadd_Click(object sender, EventArgs e)
+        {
+
+            Sitefunc();
         }
         private void cleartxt()
         {
@@ -109,19 +141,7 @@ namespace FSC_FTM_Sites
         {
             if (e.KeyData == Keys.Enter)
             {
-                string message = "Do you want to Add More site?";
-                string title = "Add";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    addsite();
-                    txtsitename.Focus();
-                }
-                else
-                {
-                    this.Close();
-                }
+                Sitefunc();
             }
            
         }

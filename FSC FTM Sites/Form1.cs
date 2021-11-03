@@ -74,16 +74,7 @@ namespace FSC_FTM_Sites
 
       
 
-        private void DataGridView1_DoubleClick(object sender, EventArgs e)
-        {
-            //label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            //txtname.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-        }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+    
 
         private void DgList1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
