@@ -30,9 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgList1 = new System.Windows.Forms.DataGridView();
-            this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codename = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtfullname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtcodename = new System.Windows.Forms.TextBox();
@@ -41,6 +38,9 @@
             this.btnadd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblid = new System.Windows.Forms.Label();
+            this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codename = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgList1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,34 +71,6 @@
             this.dgList1.TabIndex = 43;
             this.dgList1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgList1_CellClick);
             // 
-            // fullname
-            // 
-            this.fullname.DataPropertyName = "fullname";
-            this.fullname.HeaderText = "Full Name";
-            this.fullname.MinimumWidth = 8;
-            this.fullname.Name = "fullname";
-            this.fullname.ReadOnly = true;
-            this.fullname.Width = 150;
-            // 
-            // codename
-            // 
-            this.codename.DataPropertyName = "codename";
-            this.codename.HeaderText = "Code Name";
-            this.codename.MinimumWidth = 8;
-            this.codename.Name = "codename";
-            this.codename.ReadOnly = true;
-            this.codename.Width = 150;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.MinimumWidth = 8;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            this.id.Width = 150;
-            // 
             // txtfullname
             // 
             this.txtfullname.Location = new System.Drawing.Point(136, 13);
@@ -124,6 +96,7 @@
             this.txtcodename.Name = "txtcodename";
             this.txtcodename.Size = new System.Drawing.Size(132, 26);
             this.txtcodename.TabIndex = 44;
+            this.txtcodename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcodename_KeyDown);
             // 
             // label2
             // 
@@ -178,6 +151,34 @@
             this.lblid.TabIndex = 49;
             this.lblid.Text = "label3";
             this.lblid.Visible = false;
+            // 
+            // fullname
+            // 
+            this.fullname.DataPropertyName = "fullname";
+            this.fullname.HeaderText = "Full Name";
+            this.fullname.MinimumWidth = 8;
+            this.fullname.Name = "fullname";
+            this.fullname.ReadOnly = true;
+            this.fullname.Width = 150;
+            // 
+            // codename
+            // 
+            this.codename.DataPropertyName = "codename";
+            this.codename.HeaderText = "Code Name";
+            this.codename.MinimumWidth = 8;
+            this.codename.Name = "codename";
+            this.codename.ReadOnly = true;
+            this.codename.Width = 50;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.MinimumWidth = 8;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            this.id.Width = 150;
             // 
             // frm_adduser
             // 

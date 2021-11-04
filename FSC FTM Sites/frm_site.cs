@@ -146,6 +146,9 @@ namespace FSC_FTM_Sites
            
         }
 
-      
+        private void txtarea_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -21,6 +21,11 @@ namespace FSC_FTM_Sites
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
+
+
+
+        string msgmessage;
+        string msgtitle;
         //set connection
         private void SetConnection()
         {
@@ -67,21 +72,78 @@ namespace FSC_FTM_Sites
             txtcodename.Clear();
             lblid.Text = "";
         }
-
-        private void Btnadd_Click(object sender, EventArgs e)
+        private void adduser()
         {
-            string txtQuery = "insert into tbl_user (fullname, codename)values('" + txtfullname.Text + "', '"+txtcodename.Text+"')";
+            string txtQuery = "insert into tbl_user (fullname, codename)values('" + txtfullname.Text + "', '" + txtcodename.Text + "')";
             ExecuteQuery(txtQuery);
             LoadData();
             clear();
         }
+        private void Userfunc()
+        {
+            try
+            {
+                if (txtfullname.Text == "" || txtcodename.Text == "")
+                {
+                    msgmessage = "Field is empty!";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string message = "Do you want to Add More User?";
+                    string title = "Add";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        adduser();
+                        txtfullname.Focus();
+                    }
+                    else
+                    {
+                        adduser();
+                        this.Close();
+                    }
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+        private void Btnadd_Click(object sender, EventArgs e)
+        {
+
+            Userfunc();
+        }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string txtQuery = "delete from tbl_user where id='" + lblid.Text + "'";
-            ExecuteQuery(txtQuery);
-            LoadData();
-            clear();
+            try
+            {
+                if (txtfullname.Text == "" || txtcodename.Text == "")
+                {
+                    msgmessage = "Select User you want to delete!";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string txtQuery = "delete from tbl_user where id='" + lblid.Text + "'";
+                    ExecuteQuery(txtQuery);
+                    LoadData();
+                    clear();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+                  
         }
 
         private void DgList1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -99,10 +161,35 @@ namespace FSC_FTM_Sites
 
         private void Btnedit_Click_1(object sender, EventArgs e)
         {
-            string txtQuery = "update tbl_user set fullname='" + txtfullname.Text + "', codename='"+ txtcodename.Text + "' where id='" + lblid.Text + "'";
-            ExecuteQuery(txtQuery);
-            LoadData();
-            clear();
+           
+            try
+            {
+                if (txtfullname.Text == "" || txtcodename.Text == "")
+                {
+                    msgmessage = "Field is empty!";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string txtQuery = "update tbl_user set fullname='" + txtfullname.Text + "', codename='" + txtcodename.Text + "' where id='" + lblid.Text + "'";
+                    ExecuteQuery(txtQuery);
+                    LoadData();
+                    clear();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void txtcodename_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                Userfunc();
+            }
         }
     }
 }

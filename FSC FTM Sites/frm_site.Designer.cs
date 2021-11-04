@@ -57,6 +57,7 @@
             this.txtarea.Name = "txtarea";
             this.txtarea.Size = new System.Drawing.Size(168, 26);
             this.txtarea.TabIndex = 1;
+            this.txtarea.TextChanged += new System.EventHandler(this.txtarea_TextChanged);
             this.txtarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtarea_KeyDown);
             // 
             // btnadd
