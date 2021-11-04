@@ -22,6 +22,7 @@ namespace FSC_FTM_Sites
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
 
+        public string user_codename;
 
 
         string msgmessage;
@@ -50,7 +51,7 @@ namespace FSC_FTM_Sites
             SetConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "select * from tbl_user";
+            string CommandText = "select * from tbl_user  order by id desc";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
             DB.Fill(DS);
@@ -125,18 +126,31 @@ namespace FSC_FTM_Sites
         {
             try
             {
-                if (txtfullname.Text == "" || txtcodename.Text == "")
+                if (lblid.Text == "")
                 {
-                    msgmessage = "Select User you want to delete!";
+                    msgmessage = "No User Selected!";
                     msgtitle = "Prompt";
                     MessageBox.Show(msgmessage, msgtitle);
                 }
                 else
                 {
-                    string txtQuery = "delete from tbl_user where id='" + lblid.Text + "'";
-                    ExecuteQuery(txtQuery);
-                    LoadData();
-                    clear();
+                    string message = "Delete "+ user_codename + " User?";
+                    string title = "Add";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        string txtQuery = "delete from tbl_user where id='" + lblid.Text + "'";
+                        ExecuteQuery(txtQuery);
+                        LoadData();
+                        clear();
+                    }
+                    else
+                    {
+                        ///
+                    }
+                 
                 }
             }
             catch(Exception ex)
@@ -148,14 +162,14 @@ namespace FSC_FTM_Sites
 
         private void DgList1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (e.RowIndex >= 0)
             {
-                dgList1.CurrentRow.Selected = true;
-                lblid.Text = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
-                txtfullname.Text = dgList1.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtcodename.Text = dgList1.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-               
-                
+                DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
+
+                lblid.Text = row.Cells["id"].Value.ToString();
+                user_codename = row.Cells["codename"].Value.ToString();
+
+
             }
         }
 
@@ -189,6 +203,26 @@ namespace FSC_FTM_Sites
             if (e.KeyData == Keys.Enter)
             {
                 Userfunc();
+            }
+        }
+
+        private void DgList1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
+
+                lblid.Text = row.Cells["id"].Value.ToString();
+                txtfullname.Text = row.Cells["fullname"].Value.ToString();
+                txtcodename.Text = row.Cells["codename"].Value.ToString();
+            }
+        }
+
+        private void Txtfullname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                txtcodename.Focus();
             }
         }
     }

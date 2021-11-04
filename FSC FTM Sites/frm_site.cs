@@ -12,9 +12,12 @@ namespace FSC_FTM_Sites
 {
     public partial class frm_site : Form
     {
-        public frm_site()
+        private readonly Form1 frm1;
+        public frm_site(Form1 frm)
         {
             InitializeComponent();
+
+            frm1 = frm;
         }
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
@@ -106,11 +109,13 @@ namespace FSC_FTM_Sites
 
                         addsite();
                         txtsitename.Focus();
+                        frm1.LoadData();
                     }
                     else
                     {
                         addsite();
                         this.Close();
+                        frm1.LoadData();
                     }
 
                 }
@@ -149,6 +154,22 @@ namespace FSC_FTM_Sites
         private void txtarea_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Txtsitename_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                txtbg.Focus();
+            }
+        }
+
+        private void Txtbg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                txtarea.Focus();
+            }
         }
     }
 }

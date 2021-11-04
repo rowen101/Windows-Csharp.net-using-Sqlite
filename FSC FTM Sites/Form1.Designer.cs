@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,6 +46,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.lblcount = new System.Windows.Forms.Label();
             this.btnDel = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgList1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,11 +71,15 @@
             // 
             // button1
             // 
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.ImageIndex = 2;
+            this.button1.ImageList = this.imageList1;
             this.button1.Location = new System.Drawing.Point(12, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 34);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Immediate Support";
+            this.button1.Text = "Support";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -80,8 +87,8 @@
             // 
             this.dgList1.AllowUserToAddRows = false;
             this.dgList1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.dgList1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.dgList1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgList1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -104,7 +111,7 @@
             this.dgList1.RowHeadersWidth = 25;
             this.dgList1.Size = new System.Drawing.Size(532, 269);
             this.dgList1.TabIndex = 42;
-            this.dgList1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgList1_CellEnter);
+            this.dgList1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgList1_CellClick_1);
             // 
             // siteid
             // 
@@ -169,21 +176,26 @@
             // 
             // button2
             // 
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.ImageIndex = 4;
+            this.button2.ImageList = this.imageList1;
             this.button2.Location = new System.Drawing.Point(89, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 34);
             this.button2.TabIndex = 8;
             this.button2.Text = "Add &Site";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(268, 10);
+            this.button3.ImageIndex = 1;
+            this.button3.ImageList = this.imageList1;
+            this.button3.Location = new System.Drawing.Point(285, 9);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(55, 23);
             this.button3.TabIndex = 43;
-            this.button3.Text = "Refresh";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
@@ -199,13 +211,27 @@
             // 
             // btnDel
             // 
+            this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDel.ImageIndex = 3;
+            this.btnDel.ImageList = this.imageList1;
             this.btnDel.Location = new System.Drawing.Point(167, 5);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(75, 34);
             this.btnDel.TabIndex = 45;
             this.btnDel.Text = "D&elete";
+            this.btnDel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDel.UseVisualStyleBackColor = true;
             this.btnDel.Click += new System.EventHandler(this.BtnDel_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1300247827_desktop_computer.ico");
+            this.imageList1.Images.SetKeyName(1, "download.ico");
+            this.imageList1.Images.SetKeyName(2, "download_1.ico");
+            this.imageList1.Images.SetKeyName(3, "trash.ico");
+            this.imageList1.Images.SetKeyName(4, "warehouse-2544075-2123173.ico");
             // 
             // Form1
             // 
@@ -221,6 +247,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(13, 60, 13, 13);
@@ -249,6 +276,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn business_group;
         private System.Windows.Forms.DataGridViewTextBoxColumn site_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn area;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

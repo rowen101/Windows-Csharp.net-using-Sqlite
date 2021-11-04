@@ -44,7 +44,7 @@ namespace FSC_FTM_Sites
         }
 
         //set loadDB
-        private void LoadData()
+        public void LoadData()
         {
             SetConnection();
             sql_con.Open();
@@ -87,11 +87,19 @@ namespace FSC_FTM_Sites
             {
                 dgList1.CurrentRow.Selected = true;
                 ID = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
-                
+              //  ID = row.Cells["siteid"].Value.ToString();
+
 
 
             }
-            // lblsiteid.Text = dgList1.SelectedRows[0].Cells[0].Value.ToString();
+            //if (e.RowIndex >= 0)
+            //{
+            //    DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
+
+            //    ID = row.Cells["id"].Value.ToString();
+             
+            //}
+           
 
         }
         private void grideview()
@@ -113,7 +121,7 @@ namespace FSC_FTM_Sites
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            frm_site fsite = new frm_site();
+            frm_site fsite = new frm_site(this);
             fsite.ShowDialog();
         }
 
@@ -159,6 +167,17 @@ namespace FSC_FTM_Sites
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
             (dgList1.DataSource as DataTable).DefaultView.RowFilter = string.Format("business_group LIKE '%{0}%' OR fullname LIKE '%{0}%' OR site_name LIKE '%{0}%' OR codename LIKE '%{0}%' OR area LIKE '%{0}%'", searchTextBox.Text);
+        }
+
+        private void DgList1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
+
+                ID = row.Cells["siteid"].Value.ToString();
+
+            }
         }
     }
 }
