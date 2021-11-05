@@ -20,6 +20,11 @@ namespace FSC_FTM_Sites
         private DataTable DT = new DataTable();
 
         public string ID { get; set; }
+        public string SiteName { get; set; }
+        public string FullName { get; set; }
+        public string BusinessGroup { get; set; }
+        public string Area { get; set; }
+         public string UserID { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -64,6 +69,10 @@ namespace FSC_FTM_Sites
             if (button2.Text == "&Add Site")
             {
                 ID = "";
+                SiteName = "";
+                BusinessGroup = "";
+                Area = "";
+                UserID = "";
             }
 
         }
@@ -79,36 +88,12 @@ namespace FSC_FTM_Sites
 
         }
 
-      
-
-    
-
         private void DgList1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void DgList1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                dgList1.CurrentRow.Selected = true;
-                ID = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
-              //  ID = row.Cells["siteid"].Value.ToString();
-
-
-
-            }
-            //if (e.RowIndex >= 0)
-            //{
-            //    DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
-
-            //    ID = row.Cells["id"].Value.ToString();
-             
-            //}
-           
-
-        }
+   
         private void grideview()
         {
             if (dgList1.RowCount > 0 )
@@ -136,6 +121,11 @@ namespace FSC_FTM_Sites
             else if (button2.Text == "&Edit Site")
             {
                 ID = ID;
+                UserID = UserID;
+                SiteName = SiteName;
+                BusinessGroup = BusinessGroup;
+                Area = Area;
+                FullName = FullName;
                 frm_site fsite = new frm_site(this);
                 fsite.ShowDialog();
             }
@@ -181,6 +171,11 @@ namespace FSC_FTM_Sites
                 DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
 
                 ID = row.Cells["siteid"].Value.ToString();
+                UserID = row.Cells["user_id"].Value.ToString();
+                BusinessGroup = row.Cells["business_group"].Value.ToString();
+                SiteName = row.Cells["site_name"].Value.ToString();
+                Area = row.Cells["area"].Value.ToString();
+                FullName = row.Cells["fullname"].Value.ToString();
                 button2.Text = "&Edit Site";
 
             }

@@ -61,32 +61,42 @@ namespace FSC_FTM_Sites
             comboBox1.DisplayMember = "fullname";
             SetConnection();
         }
+        //selected user in combobox
+        //private void selectUser()
+        //{
+        //    SetConnection();
+        //    sql_con.Open();
+        //    sql_cmd = sql_con.CreateCommand();
+        //    string CommandText = "select id, fullname from tbl_user";
+        //    DB = new SQLiteDataAdapter(CommandText, sql_con);
+        //    DS.Reset();
+        //    DB.Fill(DS);
+        //    DT = DS.Tables[0];
+        //    comboBox1.DataSource = DT;
+        //    comboBox1.ValueMember = "id";
+        //    comboBox1.DisplayMember = "fullname";
+        //    SetConnection();
+        //}
         private void Frm_site_Load(object sender, EventArgs e)
         {
             
             if(frm1.ID == "")
             {
                 this.Text = "Add Site";
+                btnadd.Text = "Submit";
                 LoadData();
             }
             else
             {
-                this.Text = frm1.ID;
-                SetConnection();
-                sql_con.Open();
-                sql_cmd = sql_con.CreateCommand();
-                string CommandText = "select tbl_site.siteid, tbl_user.codename,  tbl_site.business_group, tbl_site.area,  tbl_site.user_id, tbl_user.fullname, tbl_site.site_name from tbl_site inner join " +
-               "tbl_user on tbl_site.user_id = tbl_user.id where tbl_site.siteid='"+ frm1.ID + "'";
-                DB = new SQLiteDataAdapter(CommandText, sql_con);
-                DS.Reset();
-                DB.Fill(DS);
-                DT = DS.Tables[0];
-                SetConnection();
-                txtarea.Text = frm1.ID;
-        
+                btnadd.Text = "Update";
+                this.Text = "Edit Site";
+                LoadData();
+                txtsitename.Text = frm1.SiteName;
+                txtbg.Text = frm1.BusinessGroup;
+                txtarea.Text = frm1.Area;
+                comboBox1.SelectedValue = frm1.UserID;
+                comboBox1.Text = frm1.FullName;
               
-
-
             }
             
         }
@@ -112,6 +122,17 @@ namespace FSC_FTM_Sites
 
             Form1 frm = new Form1();
             frm.dgList1.Refresh();
+        }
+        private void updatesite()
+        {
+            string txtQuery = "update tbl_site set user_id='" + Convert.ToInt16(userid) + "', site_name='" + txtsitename.Text + "', business_group='" + txtbg.Text + "'" +
+                ", area='" + txtarea.Text + "' where siteid='"+ frm1.ID +"'";
+            ExecuteQuery(txtQuery);
+            cleartxt();
+
+            Form1 frm = new Form1();
+            frm.dgList1.Refresh();
+            
         }
         private void Sitefunc()
         {
@@ -153,8 +174,19 @@ namespace FSC_FTM_Sites
         }
         private void Btnadd_Click(object sender, EventArgs e)
         {
-
-            Sitefunc();
+            if (btnadd.Text == "Submit")
+            {
+                Sitefunc();
+            }
+            else if(btnadd.Text == "Update")
+            {
+               
+                updatesite();
+                frm1.LoadData();
+                this.Close();
+            }
+          
+           
         }
         private void cleartxt()
         {
@@ -176,10 +208,7 @@ namespace FSC_FTM_Sites
            
         }
 
-        private void txtarea_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void Txtsitename_KeyDown(object sender, KeyEventArgs e)
         {

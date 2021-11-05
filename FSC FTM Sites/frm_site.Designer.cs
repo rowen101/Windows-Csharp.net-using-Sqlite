@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtarea = new System.Windows.Forms.TextBox();
             this.btnadd = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtbg = new System.Windows.Forms.TextBox();
@@ -40,7 +41,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtsitename = new System.Windows.Forms.TextBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +58,6 @@
             this.txtarea.Name = "txtarea";
             this.txtarea.Size = new System.Drawing.Size(113, 20);
             this.txtarea.TabIndex = 1;
-            this.txtarea.TextChanged += new System.EventHandler(this.txtarea_TextChanged);
             this.txtarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtarea_KeyDown);
             // 
             // btnadd
@@ -74,6 +73,18 @@
             this.btnadd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnadd.UseVisualStyleBackColor = true;
             this.btnadd.Click += new System.EventHandler(this.Btnadd_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1300247827_desktop_computer.ico");
+            this.imageList1.Images.SetKeyName(1, "download.ico");
+            this.imageList1.Images.SetKeyName(2, "download_1.ico");
+            this.imageList1.Images.SetKeyName(3, "trash.ico");
+            this.imageList1.Images.SetKeyName(4, "warehouse-2544075-2123173.ico");
+            this.imageList1.Images.SetKeyName(5, "images.ico");
+            this.imageList1.Images.SetKeyName(6, "save.ico");
             // 
             // button1
             // 
@@ -140,18 +151,6 @@
             this.txtsitename.Size = new System.Drawing.Size(113, 20);
             this.txtsitename.TabIndex = 1;
             this.txtsitename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtsitename_KeyDown);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "1300247827_desktop_computer.ico");
-            this.imageList1.Images.SetKeyName(1, "download.ico");
-            this.imageList1.Images.SetKeyName(2, "download_1.ico");
-            this.imageList1.Images.SetKeyName(3, "trash.ico");
-            this.imageList1.Images.SetKeyName(4, "warehouse-2544075-2123173.ico");
-            this.imageList1.Images.SetKeyName(5, "images.ico");
-            this.imageList1.Images.SetKeyName(6, "save.ico");
             // 
             // frm_site
             // 
