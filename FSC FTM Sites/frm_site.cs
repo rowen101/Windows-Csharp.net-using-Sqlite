@@ -51,14 +51,14 @@ namespace FSC_FTM_Sites
             SetConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "select id, fullname from tbl_user";
+            string CommandText = "select id, fullname, codename from tbl_user";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
             DB.Fill(DS);
             DT = DS.Tables[0];
             comboBox1.DataSource = DT;
             comboBox1.ValueMember = "id";
-            comboBox1.DisplayMember = "fullname";
+            comboBox1.DisplayMember = "codename";
             SetConnection();
         }
         

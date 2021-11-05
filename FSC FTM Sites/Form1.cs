@@ -84,7 +84,14 @@ namespace FSC_FTM_Sites
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadData();
-           
+            if (dgList1.RowCount > 0)
+            {
+                button2.Text = "&Add Site";
+            }
+            else
+            {
+                button2.Text = "&Edit Site";
+            }
 
         }
 
