@@ -135,7 +135,7 @@ namespace FSC_FTM_Sites
                 else
                 {
                     string message = "Delete "+ user_codename + " User?";
-                    string title = "Add";
+                    string title = "Prompt";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result = MessageBox.Show(message, title, buttons);
                     if (result == DialogResult.Yes)

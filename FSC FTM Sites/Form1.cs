@@ -12,13 +12,14 @@ namespace FSC_FTM_Sites
 {
     public partial class Form1 : Form
     {
+
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
 
-        string ID;
+        public string ID { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -60,6 +61,11 @@ namespace FSC_FTM_Sites
             SetConnection();
             lblcount.Text = dgList1.RowCount.ToString();
             grideview();
+            if (button2.Text == "&Add Site")
+            {
+                ID = "";
+            }
+
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -69,6 +75,7 @@ namespace FSC_FTM_Sites
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadData();
+           
 
         }
 
@@ -121,19 +128,30 @@ namespace FSC_FTM_Sites
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            frm_site fsite = new frm_site(this);
-            fsite.ShowDialog();
+            if(button2.Text == "&Add Site")
+            {
+                  frm_site fsite = new frm_site(this);
+                  fsite.ShowDialog();
+            }
+            else if (button2.Text == "&Edit Site")
+            {
+                ID = ID;
+                frm_site fsite = new frm_site(this);
+                fsite.ShowDialog();
+            }
+          
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             LoadData();
+            ID = "";
         }
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
             string message = "Do you want to delete this site?";
-            string title = "Delete";
+            string title = "Prompt";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes)
@@ -149,20 +167,7 @@ namespace FSC_FTM_Sites
            
         }
 
-        private void DgList1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if(dgList1.RowCount > 0)
-            {
-                if (dgList1.RowCount > 0)
-                {
-                      button2.Text = "&Edit Site";
-                }
-                else
-                {                
-                    button2.Text = "&Add Site";
-                }
-            }
-        }
+      
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -176,8 +181,24 @@ namespace FSC_FTM_Sites
                 DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
 
                 ID = row.Cells["siteid"].Value.ToString();
+                button2.Text = "&Edit Site";
 
             }
+            else
+            {
+                button2.Text = "&Add Site";
+            }
+        }
+
+        private void dgList1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            button2.Text = "&Add Site";
+            ID = "";
         }
     }
 }

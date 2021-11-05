@@ -63,7 +63,32 @@ namespace FSC_FTM_Sites
         }
         private void Frm_site_Load(object sender, EventArgs e)
         {
-            LoadData();
+            
+            if(frm1.ID == "")
+            {
+                this.Text = "Add Site";
+                LoadData();
+            }
+            else
+            {
+                this.Text = frm1.ID;
+                SetConnection();
+                sql_con.Open();
+                sql_cmd = sql_con.CreateCommand();
+                string CommandText = "select tbl_site.siteid, tbl_user.codename,  tbl_site.business_group, tbl_site.area,  tbl_site.user_id, tbl_user.fullname, tbl_site.site_name from tbl_site inner join " +
+               "tbl_user on tbl_site.user_id = tbl_user.id where tbl_site.siteid='"+ frm1.ID + "'";
+                DB = new SQLiteDataAdapter(CommandText, sql_con);
+                DS.Reset();
+                DB.Fill(DS);
+                DT = DS.Tables[0];
+                SetConnection();
+                txtarea.Text = frm1.ID;
+        
+              
+
+
+            }
+            
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
