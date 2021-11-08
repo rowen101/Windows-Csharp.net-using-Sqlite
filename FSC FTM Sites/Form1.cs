@@ -169,6 +169,7 @@ namespace FSC_FTM_Sites
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
             (dgList1.DataSource as DataTable).DefaultView.RowFilter = string.Format("business_group LIKE '%{0}%' OR fullname LIKE '%{0}%' OR site_name LIKE '%{0}%' OR codename LIKE '%{0}%' OR area LIKE '%{0}%'", searchTextBox.Text);
+            lblcount.Text = dgList1.Rows.Count.ToString();
         }
 
         private void DgList1_CellClick_1(object sender, DataGridViewCellEventArgs e)
