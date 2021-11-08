@@ -21,6 +21,12 @@ namespace FSC_FTM_Sites
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
+
+        public string user_codename;
+
+
+        string msgmessage;
+        string msgtitle;
         //set connection
         private void SetConnection()
         {
@@ -45,7 +51,7 @@ namespace FSC_FTM_Sites
             SetConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "select * from tbl_user";
+            string CommandText = "select * from tbl_user  order by id desc";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
             DB.Fill(DS);
@@ -67,42 +73,157 @@ namespace FSC_FTM_Sites
             txtcodename.Clear();
             lblid.Text = "";
         }
-
-        private void Btnadd_Click(object sender, EventArgs e)
+        private void adduser()
         {
-            string txtQuery = "insert into tbl_user (fullname, codename)values('" + txtfullname.Text + "', '"+txtcodename.Text+"')";
+            string txtQuery = "insert into tbl_user (fullname, codename)values('" + txtfullname.Text + "', '" + txtcodename.Text + "')";
             ExecuteQuery(txtQuery);
             LoadData();
             clear();
+        }
+        private void Userfunc()
+        {
+            try
+            {
+                if (txtfullname.Text == "" || txtcodename.Text == "")
+                {
+                    msgmessage = "Field is empty!";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string message = "Do you want to Add More User?";
+                    string title = "Add";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        adduser();
+                        txtfullname.Focus();
+                    }
+                    else
+                    {
+                        adduser();
+                        this.Close();
+                    }
+
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+        private void Btnadd_Click(object sender, EventArgs e)
+        {
+
+            Userfunc();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string txtQuery = "delete from tbl_user where id='" + lblid.Text + "'";
-            ExecuteQuery(txtQuery);
-            LoadData();
-            clear();
+            try
+            {
+                if (lblid.Text == "")
+                {
+                    msgmessage = "No User Selected!";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string message = "Delete "+ user_codename + " User?";
+                    string title = "Prompt";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        string txtQuery = "delete from tbl_user where id='" + lblid.Text + "'";
+                        ExecuteQuery(txtQuery);
+                        LoadData();
+                        clear();
+                    }
+                    else
+                    {
+                        ///
+                    }
+                 
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+                  
         }
 
         private void DgList1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (e.RowIndex >= 0)
             {
-                dgList1.CurrentRow.Selected = true;
-                lblid.Text = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
-                txtfullname.Text = dgList1.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtcodename.Text = dgList1.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-               
-                
+                DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
+
+                lblid.Text = row.Cells["id"].Value.ToString();
+                user_codename = row.Cells["codename"].Value.ToString();
+
+
             }
         }
 
         private void Btnedit_Click_1(object sender, EventArgs e)
         {
-            string txtQuery = "update tbl_user set fullname='" + txtfullname.Text + "', codename='"+ txtcodename.Text + "' where id='" + lblid.Text + "'";
-            ExecuteQuery(txtQuery);
-            LoadData();
-            clear();
+           
+            try
+            {
+                if (txtfullname.Text == "" || txtcodename.Text == "")
+                {
+                    msgmessage = "Field is empty!";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string txtQuery = "update tbl_user set fullname='" + txtfullname.Text + "', codename='" + txtcodename.Text + "' where id='" + lblid.Text + "'";
+                    ExecuteQuery(txtQuery);
+                    LoadData();
+                    clear();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void txtcodename_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                Userfunc();
+            }
+        }
+
+        private void DgList1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
+
+                lblid.Text = row.Cells["id"].Value.ToString();
+                txtfullname.Text = row.Cells["fullname"].Value.ToString();
+                txtcodename.Text = row.Cells["codename"].Value.ToString();
+            }
+        }
+
+        private void Txtfullname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                txtcodename.Focus();
+            }
         }
     }
 }

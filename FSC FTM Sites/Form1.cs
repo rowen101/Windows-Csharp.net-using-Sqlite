@@ -13,13 +13,19 @@ namespace FSC_FTM_Sites
 {
     public partial class Form1 : Form
     {
+
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
 
-        string ID;
+        public string ID { get; set; }
+        public string SiteName { get; set; }
+        public string FullName { get; set; }
+        public string BusinessGroup { get; set; }
+        public string Area { get; set; }
+         public string UserID { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -45,7 +51,7 @@ namespace FSC_FTM_Sites
         }
 
         //set loadDB
-        private void LoadData()
+        public void LoadData()
         {
             SetConnection();
             sql_con.Open();
@@ -61,6 +67,15 @@ namespace FSC_FTM_Sites
             SetConnection();
             lblcount.Text = dgList1.RowCount.ToString();
             grideview();
+            if (button2.Text == "&Add Site")
+            {
+                ID = "";
+                SiteName = "";
+                BusinessGroup = "";
+                Area = "";
+                UserID = "";
+            }
+
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -70,19 +85,14 @@ namespace FSC_FTM_Sites
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadData();
-
-        }
-
-      
-
-        private void DataGridView1_DoubleClick(object sender, EventArgs e)
-        {
-            //label2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            //txtname.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-        }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            if (dgList1.RowCount > 0)
+            {
+                button2.Text = "&Add Site";
+            }
+            else
+            {
+                button2.Text = "&Edit Site";
+            }
 
         }
 
@@ -91,19 +101,7 @@ namespace FSC_FTM_Sites
 
         }
 
-        private void DgList1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgList1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                dgList1.CurrentRow.Selected = true;
-                ID = dgList1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
-                
-
-
-            }
-            // lblsiteid.Text = dgList1.SelectedRows[0].Cells[0].Value.ToString();
-
-        }
+   
         private void grideview()
         {
             if (dgList1.RowCount > 0 )
@@ -123,19 +121,35 @@ namespace FSC_FTM_Sites
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            frm_site fsite = new frm_site();
-            fsite.ShowDialog();
+            if(button2.Text == "&Add Site")
+            {
+                  frm_site fsite = new frm_site(this);
+                  fsite.ShowDialog();
+            }
+            else if (button2.Text == "&Edit Site")
+            {
+                ID = ID;
+                UserID = UserID;
+                SiteName = SiteName;
+                BusinessGroup = BusinessGroup;
+                Area = Area;
+                FullName = FullName;
+                frm_site fsite = new frm_site(this);
+                fsite.ShowDialog();
+            }
+          
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             LoadData();
+            ID = "";
         }
 
         private void BtnDel_Click(object sender, EventArgs e)
         {
             string message = "Do you want to delete this site?";
-            string title = "Delete";
+            string title = "Prompt";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes)
@@ -151,24 +165,44 @@ namespace FSC_FTM_Sites
            
         }
 
-        private void DgList1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if(dgList1.RowCount > 0)
-            {
-                if (dgList1.RowCount > 0)
-                {
-                      button2.Text = "&Edit Site";
-                }
-                else
-                {                
-                    button2.Text = "&Add Site";
-                }
-            }
-        }
+      
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
             (dgList1.DataSource as DataTable).DefaultView.RowFilter = string.Format("business_group LIKE '%{0}%' OR fullname LIKE '%{0}%' OR site_name LIKE '%{0}%' OR codename LIKE '%{0}%' OR area LIKE '%{0}%'", searchTextBox.Text);
+            lblcount.Text = dgList1.Rows.Count.ToString();
+        }
+
+        private void DgList1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgList1.Rows[e.RowIndex];
+
+                ID = row.Cells["siteid"].Value.ToString();
+                UserID = row.Cells["user_id"].Value.ToString();
+                BusinessGroup = row.Cells["business_group"].Value.ToString();
+                SiteName = row.Cells["site_name"].Value.ToString();
+                Area = row.Cells["area"].Value.ToString();
+                FullName = row.Cells["fullname"].Value.ToString();
+                button2.Text = "&Edit Site";
+
+            }
+            else
+            {
+                button2.Text = "&Add Site";
+            }
+        }
+
+        private void dgList1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            button2.Text = "&Add Site";
+            ID = "";
         }
     }
 }

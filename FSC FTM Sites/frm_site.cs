@@ -12,9 +12,12 @@ namespace FSC_FTM_Sites
 {
     public partial class frm_site : Form
     {
-        public frm_site()
+        private readonly Form1 frm1;
+        public frm_site(Form1 frm)
         {
             InitializeComponent();
+
+            frm1 = frm;
         }
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
@@ -23,6 +26,8 @@ namespace FSC_FTM_Sites
         private DataTable DT = new DataTable();
         //set connection
         public string userid;
+        string msgmessage;
+        string msgtitle;
         private void SetConnection()
         {
             sql_con = new SQLiteConnection
@@ -46,19 +51,39 @@ namespace FSC_FTM_Sites
             SetConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "select id, fullname from tbl_user";
+            string CommandText = "select id, fullname, codename from tbl_user";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
             DS.Reset();
             DB.Fill(DS);
             DT = DS.Tables[0];
             comboBox1.DataSource = DT;
             comboBox1.ValueMember = "id";
-            comboBox1.DisplayMember = "fullname";
+            comboBox1.DisplayMember = "codename";
             SetConnection();
         }
+        
         private void Frm_site_Load(object sender, EventArgs e)
         {
-            LoadData();
+            
+            if(frm1.ID == "")
+            {
+                this.Text = "Add Site";
+                btnadd.Text = "Submit";
+                LoadData();
+            }
+            else
+            {
+                btnadd.Text = "Update";
+                this.Text = "Edit Site";
+                LoadData();
+                txtsitename.Text = frm1.SiteName;
+                txtbg.Text = frm1.BusinessGroup;
+                txtarea.Text = frm1.Area;
+                comboBox1.SelectedValue = frm1.UserID;
+                comboBox1.Text = frm1.FullName;
+              
+            }
+            
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,16 +108,70 @@ namespace FSC_FTM_Sites
             Form1 frm = new Form1();
             frm.dgList1.Refresh();
         }
-        private void Btnadd_Click(object sender, EventArgs e)
+        private void updatesite()
+        {
+            string txtQuery = "update tbl_site set user_id='" + Convert.ToInt16(userid) + "', site_name='" + txtsitename.Text + "', business_group='" + txtbg.Text + "'" +
+                ", area='" + txtarea.Text + "' where siteid='"+ frm1.ID +"'";
+            ExecuteQuery(txtQuery);
+            cleartxt();
+
+            Form1 frm = new Form1();
+            frm.dgList1.Refresh();
+            
+        }
+        private void Sitefunc()
         {
             try
             {
-                addsite();
+                if (txtsitename.Text == "" || txtbg.Text == "" || txtarea.Text == "")
+                {
+                    msgmessage = "Field is empty";
+                    msgtitle = "Prompt";
+                    MessageBox.Show(msgmessage, msgtitle);
+                }
+                else
+                {
+                    string message = "Do you want to Add More site?";
+                    string title = "Add";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        addsite();
+                        txtsitename.Focus();
+                        frm1.LoadData();
+                    }
+                    else
+                    {
+                        addsite();
+                        this.Close();
+                        frm1.LoadData();
+                    }
+
+                }
+
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
             }
+        }
+        private void Btnadd_Click(object sender, EventArgs e)
+        {
+            if (btnadd.Text == "Submit")
+            {
+                Sitefunc();
+            }
+            else if(btnadd.Text == "Update")
+            {
+               
+                updatesite();
+                frm1.LoadData();
+                this.Close();
+            }
+          
+           
         }
         private void cleartxt()
         {
@@ -109,23 +188,27 @@ namespace FSC_FTM_Sites
         {
             if (e.KeyData == Keys.Enter)
             {
-                string message = "Do you want to Add More site?";
-                string title = "Add";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    addsite();
-                    txtsitename.Focus();
-                }
-                else
-                {
-                    this.Close();
-                }
+                Sitefunc();
             }
            
         }
 
       
+
+        private void Txtsitename_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                txtbg.Focus();
+            }
+        }
+
+        private void Txtbg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                txtarea.Focus();
+            }
+        }
     }
 }

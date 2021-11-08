@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_adduser));
             this.dgList1 = new System.Windows.Forms.DataGridView();
             this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codename = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +43,7 @@
             this.btnadd = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblid = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgList1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,16 +63,16 @@
             this.fullname,
             this.codename,
             this.id});
-            this.dgList1.Location = new System.Drawing.Point(18, 93);
-            this.dgList1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgList1.Location = new System.Drawing.Point(12, 60);
             this.dgList1.MultiSelect = false;
             this.dgList1.Name = "dgList1";
             this.dgList1.ReadOnly = true;
             this.dgList1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgList1.RowHeadersWidth = 25;
-            this.dgList1.Size = new System.Drawing.Size(375, 281);
+            this.dgList1.Size = new System.Drawing.Size(250, 183);
             this.dgList1.TabIndex = 43;
             this.dgList1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgList1_CellClick);
+            this.dgList1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgList1_CellContentClick);
             // 
             // fullname
             // 
@@ -87,7 +90,7 @@
             this.codename.MinimumWidth = 8;
             this.codename.Name = "codename";
             this.codename.ReadOnly = true;
-            this.codename.Width = 150;
+            this.codename.Width = 50;
             // 
             // id
             // 
@@ -101,46 +104,43 @@
             // 
             // txtfullname
             // 
-            this.txtfullname.Location = new System.Drawing.Point(136, 13);
-            this.txtfullname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtfullname.Location = new System.Drawing.Point(91, 8);
             this.txtfullname.Name = "txtfullname";
-            this.txtfullname.Size = new System.Drawing.Size(254, 26);
+            this.txtfullname.Size = new System.Drawing.Size(171, 20);
             this.txtfullname.TabIndex = 44;
+            this.txtfullname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtfullname_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(25, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 45;
             this.label1.Text = "Full Name";
             // 
             // txtcodename
             // 
-            this.txtcodename.Location = new System.Drawing.Point(136, 53);
-            this.txtcodename.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtcodename.Location = new System.Drawing.Point(91, 34);
             this.txtcodename.Name = "txtcodename";
-            this.txtcodename.Size = new System.Drawing.Size(132, 26);
+            this.txtcodename.Size = new System.Drawing.Size(89, 20);
             this.txtcodename.TabIndex = 44;
+            this.txtcodename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcodename_KeyDown);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 53);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(25, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 20);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 45;
             this.label2.Text = "CodeName";
             // 
             // btnedit
             // 
-            this.btnedit.Location = new System.Drawing.Point(140, 384);
-            this.btnedit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnedit.Location = new System.Drawing.Point(93, 250);
             this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(112, 57);
+            this.btnedit.Size = new System.Drawing.Size(75, 37);
             this.btnedit.TabIndex = 47;
             this.btnedit.Text = "Edit";
             this.btnedit.UseVisualStyleBackColor = true;
@@ -148,10 +148,9 @@
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(18, 384);
-            this.btnadd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnadd.Location = new System.Drawing.Point(12, 250);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(112, 57);
+            this.btnadd.Size = new System.Drawing.Size(75, 37);
             this.btnadd.TabIndex = 46;
             this.btnadd.Text = "Submit";
             this.btnadd.UseVisualStyleBackColor = true;
@@ -159,10 +158,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(261, 384);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(174, 250);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 57);
+            this.button1.Size = new System.Drawing.Size(75, 37);
             this.button1.TabIndex = 48;
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = true;
@@ -171,19 +169,30 @@
             // lblid
             // 
             this.lblid.AutoSize = true;
-            this.lblid.Location = new System.Drawing.Point(490, 64);
-            this.lblid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblid.Location = new System.Drawing.Point(327, 42);
             this.lblid.Name = "lblid";
-            this.lblid.Size = new System.Drawing.Size(51, 20);
+            this.lblid.Size = new System.Drawing.Size(35, 13);
             this.lblid.TabIndex = 49;
             this.lblid.Text = "label3";
             this.lblid.Visible = false;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1300247827_desktop_computer.ico");
+            this.imageList1.Images.SetKeyName(1, "download.ico");
+            this.imageList1.Images.SetKeyName(2, "download_1.ico");
+            this.imageList1.Images.SetKeyName(3, "trash.ico");
+            this.imageList1.Images.SetKeyName(4, "warehouse-2544075-2123173.ico");
+            this.imageList1.Images.SetKeyName(5, "images.ico");
+            this.imageList1.Images.SetKeyName(6, "save.ico");
+            // 
             // frm_adduser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 460);
+            this.ClientSize = new System.Drawing.Size(274, 299);
             this.Controls.Add(this.lblid);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnedit);
@@ -194,7 +203,7 @@
             this.Controls.Add(this.txtfullname);
             this.Controls.Add(this.dgList1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_adduser";
@@ -222,5 +231,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fullname;
         private System.Windows.Forms.DataGridViewTextBoxColumn codename;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

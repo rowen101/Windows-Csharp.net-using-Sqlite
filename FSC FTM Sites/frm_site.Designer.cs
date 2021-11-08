@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_site));
             this.label1 = new System.Windows.Forms.Label();
             this.txtarea = new System.Windows.Forms.TextBox();
             this.btnadd = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtbg = new System.Windows.Forms.TextBox();
@@ -43,105 +46,117 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 20);
+            this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Site Name";
             // 
             // txtarea
             // 
-            this.txtarea.Location = new System.Drawing.Point(139, 103);
-            this.txtarea.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtarea.Location = new System.Drawing.Point(93, 67);
             this.txtarea.Name = "txtarea";
-            this.txtarea.Size = new System.Drawing.Size(168, 26);
+            this.txtarea.Size = new System.Drawing.Size(113, 20);
             this.txtarea.TabIndex = 1;
             this.txtarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtarea_KeyDown);
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(333, 89);
-            this.btnadd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnadd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnadd.ImageIndex = 6;
+            this.btnadd.ImageList = this.imageList1;
+            this.btnadd.Location = new System.Drawing.Point(282, 55);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(148, 55);
+            this.btnadd.Size = new System.Drawing.Size(71, 36);
             this.btnadd.TabIndex = 4;
             this.btnadd.Text = "Submit";
+            this.btnadd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnadd.UseVisualStyleBackColor = true;
             this.btnadd.Click += new System.EventHandler(this.Btnadd_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1300247827_desktop_computer.ico");
+            this.imageList1.Images.SetKeyName(1, "download.ico");
+            this.imageList1.Images.SetKeyName(2, "download_1.ico");
+            this.imageList1.Images.SetKeyName(3, "trash.ico");
+            this.imageList1.Images.SetKeyName(4, "warehouse-2544075-2123173.ico");
+            this.imageList1.Images.SetKeyName(5, "images.ico");
+            this.imageList1.Images.SetKeyName(6, "save.ico");
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(504, 89);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.ImageIndex = 5;
+            this.button1.ImageList = this.imageList1;
+            this.button1.Location = new System.Drawing.Point(368, 55);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 55);
+            this.button1.Size = new System.Drawing.Size(68, 36);
             this.button1.TabIndex = 5;
             this.button1.Text = "Cancel";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 63);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(9, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 20);
+            this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Business Group";
             // 
             // txtbg
             // 
-            this.txtbg.Location = new System.Drawing.Point(139, 63);
-            this.txtbg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtbg.Location = new System.Drawing.Point(93, 41);
             this.txtbg.Name = "txtbg";
-            this.txtbg.Size = new System.Drawing.Size(168, 26);
+            this.txtbg.Size = new System.Drawing.Size(113, 20);
             this.txtbg.TabIndex = 1;
+            this.txtbg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtbg_KeyDown);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 103);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(9, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 20);
+            this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Area";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(315, 22);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(210, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 20);
+            this.label7.Size = new System.Drawing.Size(95, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Immediate Support";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(468, 22);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox1.Location = new System.Drawing.Point(312, 14);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(184, 28);
+            this.comboBox1.Size = new System.Drawing.Size(124, 21);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // txtsitename
             // 
-            this.txtsitename.Location = new System.Drawing.Point(139, 19);
-            this.txtsitename.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtsitename.Location = new System.Drawing.Point(93, 12);
             this.txtsitename.Name = "txtsitename";
-            this.txtsitename.Size = new System.Drawing.Size(168, 26);
+            this.txtsitename.Size = new System.Drawing.Size(113, 20);
             this.txtsitename.TabIndex = 1;
+            this.txtsitename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtsitename_KeyDown);
             // 
             // frm_site
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 171);
+            this.ClientSize = new System.Drawing.Size(466, 111);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnadd);
@@ -153,7 +168,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_site";
@@ -178,5 +193,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox txtsitename;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
