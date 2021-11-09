@@ -35,10 +35,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dgList1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.lblcount = new System.Windows.Forms.Label();
-            this.btnDel = new System.Windows.Forms.Button();
             this.siteid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,15 +42,21 @@
             this.business_group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.site_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lblcount = new System.Windows.Forms.Label();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnexport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgList1)).BeginInit();
             this.SuspendLayout();
             // 
             // searchTextBox
             // 
             this.searchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchTextBox.Location = new System.Drawing.Point(313, 12);
+            this.searchTextBox.Location = new System.Drawing.Point(470, 18);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(195, 20);
+            this.searchTextBox.Size = new System.Drawing.Size(290, 26);
             this.searchTextBox.TabIndex = 5;
             this.searchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
@@ -63,9 +65,10 @@
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.ImageIndex = 2;
             this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(12, 4);
+            this.button1.Location = new System.Drawing.Point(18, 6);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
+            this.button1.Size = new System.Drawing.Size(112, 52);
             this.button1.TabIndex = 8;
             this.button1.Text = "Support";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -81,6 +84,7 @@
             this.imageList1.Images.SetKeyName(2, "download_1.ico");
             this.imageList1.Images.SetKeyName(3, "trash.ico");
             this.imageList1.Images.SetKeyName(4, "warehouse-2544075-2123173.ico");
+            this.imageList1.Images.SetKeyName(5, "export-file-document-doc-produce-execute-interface-13290.ico");
             // 
             // dgList1
             // 
@@ -102,65 +106,16 @@
             this.business_group,
             this.site_name,
             this.area});
-            this.dgList1.Location = new System.Drawing.Point(12, 45);
-            this.dgList1.MultiSelect = false;
+            this.dgList1.Location = new System.Drawing.Point(18, 69);
+            this.dgList1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgList1.Name = "dgList1";
             this.dgList1.ReadOnly = true;
             this.dgList1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgList1.RowHeadersWidth = 25;
-            this.dgList1.Size = new System.Drawing.Size(494, 269);
+            this.dgList1.Size = new System.Drawing.Size(741, 422);
             this.dgList1.TabIndex = 42;
             this.dgList1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgList1_CellClick_1);
             this.dgList1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgList1_CellContentClick_1);
-            // 
-            // button2
-            // 
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.ImageIndex = 4;
-            this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(89, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 34);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Add &Site";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.ImageIndex = 1;
-            this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(253, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(55, 34);
-            this.button3.TabIndex = 43;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            // 
-            // lblcount
-            // 
-            this.lblcount.AutoSize = true;
-            this.lblcount.BackColor = System.Drawing.Color.LimeGreen;
-            this.lblcount.Location = new System.Drawing.Point(16, 317);
-            this.lblcount.Name = "lblcount";
-            this.lblcount.Size = new System.Drawing.Size(13, 13);
-            this.lblcount.TabIndex = 44;
-            this.lblcount.Text = "0";
-            // 
-            // btnDel
-            // 
-            this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDel.ImageIndex = 3;
-            this.btnDel.ImageList = this.imageList1;
-            this.btnDel.Location = new System.Drawing.Point(167, 5);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 34);
-            this.btnDel.TabIndex = 45;
-            this.btnDel.Text = "D&elete";
-            this.btnDel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.BtnDel_Click);
             // 
             // siteid
             // 
@@ -227,11 +182,77 @@
             this.area.ReadOnly = true;
             this.area.Width = 75;
             // 
+            // button2
+            // 
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.ImageIndex = 4;
+            this.button2.ImageList = this.imageList1;
+            this.button2.Location = new System.Drawing.Point(134, 8);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 52);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Add &Site";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.ImageIndex = 1;
+            this.button3.ImageList = this.imageList1;
+            this.button3.Location = new System.Drawing.Point(380, 8);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(82, 52);
+            this.button3.TabIndex = 43;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // lblcount
+            // 
+            this.lblcount.AutoSize = true;
+            this.lblcount.BackColor = System.Drawing.Color.LimeGreen;
+            this.lblcount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcount.Location = new System.Drawing.Point(24, 499);
+            this.lblcount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblcount.Name = "lblcount";
+            this.lblcount.Size = new System.Drawing.Size(23, 25);
+            this.lblcount.TabIndex = 44;
+            this.lblcount.Text = "0";
+            // 
+            // btnDel
+            // 
+            this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDel.ImageIndex = 3;
+            this.btnDel.ImageList = this.imageList1;
+            this.btnDel.Location = new System.Drawing.Point(250, 8);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(112, 52);
+            this.btnDel.TabIndex = 45;
+            this.btnDel.Text = "D&elete";
+            this.btnDel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.BtnDel_Click);
+            // 
+            // btnexport
+            // 
+            this.btnexport.ImageIndex = 5;
+            this.btnexport.ImageList = this.imageList1;
+            this.btnexport.Location = new System.Drawing.Point(684, 499);
+            this.btnexport.Name = "btnexport";
+            this.btnexport.Size = new System.Drawing.Size(75, 48);
+            this.btnexport.TabIndex = 46;
+            this.btnexport.UseVisualStyleBackColor = true;
+            this.btnexport.Click += new System.EventHandler(this.btnexport_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 343);
+            this.ClientSize = new System.Drawing.Size(777, 549);
+            this.Controls.Add(this.btnexport);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.lblcount);
             this.Controls.Add(this.button3);
@@ -241,9 +262,10 @@
             this.Controls.Add(this.searchTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Padding = new System.Windows.Forms.Padding(13, 60, 13, 13);
+            this.Padding = new System.Windows.Forms.Padding(20, 92, 20, 20);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FSC FTM Sites";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -270,6 +292,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn business_group;
         private System.Windows.Forms.DataGridViewTextBoxColumn site_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn area;
+        private System.Windows.Forms.Button btnexport;
     }
 }
 

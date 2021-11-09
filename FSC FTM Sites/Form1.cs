@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-
+using Excel = Microsoft.Office.Interop.Excel;
 namespace FSC_FTM_Sites
 {
     public partial class Form1 : Form
@@ -203,6 +203,63 @@ namespace FSC_FTM_Sites
         {
             button2.Text = "&Add Site";
             ID = "";
+        }
+
+        private void copyAlltoClipboard()
+        {
+            dgList1.SelectAll();
+            DataObject dataObj = dgList1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+
+        private void btnexport_Click(object sender, EventArgs e)
+        {
+            copyAlltoClipboard();
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            for (int i = 1; i < dgList1.Columns.Count + 1; i++)
+            {
+                xlWorkSheet.Cells[1, i] = dgList1.Columns[i - 1].HeaderText;
+            }
+           
+
+            //// creating Excel Application  
+            //Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            //// creating new WorkBook within Excel application  
+            //Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            //// creating new Excelsheet in workbook  
+            //Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            //// see the excel sheet behind the program  
+            //app.Visible = true;
+            //// get the reference of first sheet. By default its name is Sheet1.  
+            //// store its reference to worksheet  
+            //worksheet = workbook.Sheets["Sheet1"];
+            //worksheet = workbook.ActiveSheet;
+            //// changing the name of active sheet  
+            //worksheet.Name = "Exported from gridview";
+            //// storing header part in Excel  
+            //for (int i = 1; i < dgList1.Columns.Count + 1; i++)
+            //{
+            //    worksheet.Cells[1, i] = dgList1.Columns[i - 1].HeaderText;
+            //}
+            //// storing Each row and column value to excel sheet  
+            //for (int i = 0; i < dgList1.Rows.Count - 1; i++)
+            //{
+            //    for (int j = 0; j < dgList1.Columns.Count; j++)
+            //    {
+            //        worksheet.Cells[i + 2, j + 1] = dgList1.Rows[i].Cells[j].Value.ToString();
+            //    }
+            //}
         }
     }
 }
